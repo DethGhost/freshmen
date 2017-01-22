@@ -4,6 +4,7 @@ import com.github.dethghost.freshmen.entities.Professor;
 import com.github.dethghost.freshmen.entities.Student;
 
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by Eugene Khudoliiv.
@@ -11,11 +12,14 @@ import java.util.List;
  */
 public interface Init {
 
-    public List<Student> initStudents(int studentsInGroup, int numbersOfGroup);
+    void initStudents();
 
-    public List<Professor> initProfessors();
+    void initProfessors();
 
-    public Student choseMonitor(List<Student> students);
+    Student choseMonitor(List<Student> students);
 
-    public List<Student> setMarks(List<Student> students);
+    void setMarks(List<Student> students);
+
+    void intiGroup();
+
 }

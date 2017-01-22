@@ -1,17 +1,19 @@
 package com.github.dethghost.freshmen.entities;
 
+import java.util.Arrays;
+
 /**
  * Created by Eugene Khudoliiv.
  * (eugenkhidoliiv@gmail.com)
  */
-public class Student{
+public class Student {
 
     private int age;
     private String fullName;
     private Group group;
     private int[] marks;
     private float averageMark;
-    private  boolean isPresent;
+    private boolean isPresent;
     private boolean isActive;
     private boolean isSmokes;
     private boolean isDrinks;
@@ -111,6 +113,22 @@ public class Student{
 
     public void setMonitor(boolean monitor) {
         isMonitor = monitor;
+    }
+
+    @Override
+    public String toString() {
+        return "\n########## Student BIO ##########"
+                + "\n" + "Name: " + getFullName()
+                + "\n" + "Age: " + getAge()
+                + "\n" + "Group: " + getGroup().getNumber()
+                + "\n" + "Marks: " + Arrays.toString(getMarks())
+                + "\n" + "Average Mark: " + getAverageMark()
+                + "\n" + "Present today: " + isPresent()
+                + "\n" + "Class monitor: " + isMonitor()
+                + "\n" + "Active life: " + isActive()
+                + "\n" + "Smokes: " + isSmokes()
+                + "\n" + "Drinks: " + isDrinks() + "\n"
+                + "--------------------------------";
     }
 }
 

@@ -48,4 +48,11 @@ public class Professor{
     public void setGroup(Group group) {
         this.group = group;
     }
+
+    @Override
+    public String toString() {
+        return "\nProfessor: " + fullName+
+                "\nage: " + age +
+                "\ngroup: " + group.getNumber();
+    }
 }

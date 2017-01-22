@@ -14,6 +14,7 @@ import java.util.List;
  */
 public class AutoInitImpl implements Init {
 
+    private static final AutoInitImpl instance = new AutoInitImpl();
     private List<Student> students = new ArrayList<>();
     private List<Group> groups = new ArrayList<>();
     private List<Professor> professors = new ArrayList<>();
@@ -48,15 +49,25 @@ public class AutoInitImpl implements Init {
             "Evseeva Alina Hristoforovna",
             "Larionova Kseniya Vladlenovna",
             "Arhipova Evgeniya Hristoforovna",
-            "Fadeev Varlam Dmitrevich" };
-
-    private static final AutoInitImpl instance = new AutoInitImpl();
+            "Fadeev Varlam Dmitrevich"};
 
     private AutoInitImpl() {
     }
 
     public static AutoInitImpl getInstance() {
         return instance;
+    }
+
+    @Override
+    public void init() throws InterruptedException {
+        Thread.sleep(1000);
+        System.out.println("Initialization");
+        Thread.sleep(1000);
+        intiGroup();
+        Thread.sleep(1000);
+        initProfessors();
+        Thread.sleep(1000);
+        initStudents();
     }
 
     public void initStudents() {
@@ -74,9 +85,9 @@ public class AutoInitImpl implements Init {
                                 Math.random() > 0.5,
                                 Math.random() > 0.5,
                                 Math.random() > 0.5,
-                                Math.random() > 0.5));
+                                false));
                 groups.get(i).addStudent(students.get(names++));
-                groups.get(i).setNumber(i);
+                groups.get(i).setNumber(i + 1);
             }
         }
         setMarks(students);
@@ -93,20 +104,26 @@ public class AutoInitImpl implements Init {
         System.out.println("Professors created");
     }
 
-    public Student choseMonitor(List<Student> students) {
-        System.out.println("Begin choosing group monitor");
-
-        for (Group group : groups) {
-            for (Student student : group.getStudents()) {
-                if (student.isActive() & !student.isDrinks() & !student.isSmokes() & !student.isPresent()) {
-                    System.out.println(student);
+    public void choseMonitor(List<Student> students) {
+        if (students.stream().allMatch((s) -> s.isMonitor() == false)) {
+            for (Group group : groups) {
+                List<Student> studentList = new ArrayList<>();
+                for (Student student : group.getStudents()) {
+                    if (student.isActive() & !student.isDrinks() & !student.isSmokes() & student.isPresent()) {
+                        studentList.add(student);
+                    } else if (student.isActive() & !student.isDrinks()) {
+                        studentList.add(student);
+                    } else if (student.isActive()) {
+                        studentList.add(student);
+                    }
                 }
+                int i = (int) (Math.random() * studentList.size());
+                studentList.get(i).setMonitor(true);
+                System.out.println("Monitor for group[" + group.getNumber() + "]: " + "\n" + studentList.get(i));
             }
-
+        } else {
+            System.err.println("You already chose monitor, try another option");
         }
-
-
-        return null;
     }
 
     @Override

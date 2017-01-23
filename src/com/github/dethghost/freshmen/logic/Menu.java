@@ -116,6 +116,7 @@ public class Menu {
                                 System.err.println("Illegal option, please enter valid.");
                         }
                     }
+                    break;
                 case ("5"):
                     System.out.println("Professors: ");
                     Thread.sleep(1000);

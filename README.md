@@ -13,7 +13,7 @@
  4) Провести перекличку (Профессор проводит перекличку и выводит список присутствующих студентов)
  5) Показать список профессоров (выводит информацию о профессорах)
  6) Завершение работы программы
-5. После выбора действия из предыдущего меня и его успешного выполнения, вы снова попадете в меню из пункта 4
+5. После выбора действия из предыдущего меню и его успешного выполнения, вы снова попадете в меню из пункта 4)
 
 
 ### User's manual
@@ -27,7 +27,7 @@
  4) Conduct a roll call (Professor holds the roll and lists presentedin students)
  5) Show the list of professors (displays information about the professors)
  6) The completion of the work program
-5. After selecting the action from the previous me, and it is successful, you will be taken back to the menu from 4
+5. After selecting the action from the previous menu, and it is successful, you will be taken back to the menu from 4)
 
 ##	Технічне завдання: напишіть програму “Першокурсники”:
 1.	В програмі мають бути створені класи: студенти, професор, група (за бажанням класи можна додавати);
